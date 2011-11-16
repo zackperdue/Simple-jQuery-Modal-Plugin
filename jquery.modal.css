@@ -1,0 +1,23 @@
+.overlay{
+	background: #fff;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 400;
+	opacity: 0;
+}
+
+.modal{
+	display: none;
+	background: #990099;
+	z-index: 900;
+	padding: 5px;
+	position: absolute;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	top: -400px;   
+}
