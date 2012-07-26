@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Simple jQuery Modal Plugin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple jQuery Modal Plugin">
+    <meta name="author" content="Zack Perdue"><!-- Le styles -->
+
+	<!-- Bootstrap Assets to make things pretty -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">body { padding-top: 60px; }</style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    
+    
+    <!-- Modal Assets -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.modal.css" />
+    <script type="text/javascript" src="js/jquery.modal.js"></script>
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a> 
+                <a class="brand" href="http://staging.arr.ae/Simple-jQuery-Modal-Plugin/">jQuery Modal PLugin</a>
+
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="http://staging.arr.ae/Simple-jQuery-Modal-Plugin/">Home</a></li>
+                        <li><a href="http://zackperdue.com/tutorials/simple-jquery-modal-plugin/">More Info</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+    	<div class="hero-unit">
+			<h1>jQuery Modal / Lightbox Demo</h1>
+			
+			<p>&nbsp;</p>
+			<p>
+				There are <strong>so many</strong> different types of lightbox scripts in the wild, and while most of them are absolutely fantastic most of them are very limited in the control that they give you over the style, function and code. To make matters worse, most of these lightbox scripts are also 5k or bigger, which is 5k more than you need sometimes. If you're like us, and you do a lot of customization or want to tweak your code to be as fast as possible, then you’ll want this simple little jquery lightbox plugin. Style your lightbox exactly how you’d like and then simple invoke the modal() function and you'll be able to trigger the lightbox.
+			</p>
+			<p>&nbsp;</p>
+						
+			<!-- you can use the href or the data attribute to call the modal -->
+			<p>
+				<a href="#modal-window" data-modal="#modal-window" class="show-modal btn btn-primary btn-large">Show me the modal</a>
+				<a href="#modal-readme" class="show-modal btn btn-large">Another example</a>
+			</p>
+		</div>
+			
+		<!-- The modal itself is below this line -->
+		<div class="modal" id="modal-window">
+			<img style="float: left;" src="images/freeipad2.jpg" alt="Click here for a chance to win an iPad 2!" />
+		</div>
+		
+		<div class="modal" id="modal-readme">
+			<div style="background: #fff; padding: 30px; width: 400px;">
+				<h2>Another Modal!</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+		<!-- End .modal -->
+			
+    </div>
+    <!-- end: .container -->
+    
+    
+    <!-- modal assets -->
+    <script type="text/javascript">
+	$(function(){
+		$('.show-modal').on('click', function() {
+			var $this = $(this);
+			
+			if (typeof $this.data('modal') === 'undefined') {
+				var modal = $this.attr('href');
+			}
+			else {
+				var modal = $this.data('modal');
+			}
+                
+			$(modal).modal({
+				opacity: .5,
+				backgroundColor: '#000',
+				scrollable: true,
+				speed: 300,
+				onhide: null,
+				onshow: null,
+				onstart: function(){},
+				onfinish: function(){},
+			});
+		});
+	});
+    </script>
+
+</body>
+</html>
