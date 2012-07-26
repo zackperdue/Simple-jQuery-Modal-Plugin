@@ -1,19 +1,18 @@
 /**
  * @author Zack Perdue / Ziggidy Creative
- * @author Clayton McIlrath / Chosen Collective
+ * @author Clayton McIlrath / Arrae Creative
  * 
  * http://zackperdue.com
  * http://ziggidycreative.com
- * http://chosencollective.com/
+ * http://arr.ae/
  *
- * Version 0.1
- * Copyright (c) 2011 Ziggidy Creative
+ * Version 0.2
+ * Copyright (c) 2012 Clay McIlrath and Zack Perdue
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/mit-license.php
- *
  */
-jQuery.fn.modal = function(options){
+jQuery.fn.modal = function(options) {
 	
 	var defaults = {
 		opacity: 1,
@@ -26,30 +25,28 @@ jQuery.fn.modal = function(options){
 		onfinish: function(){},
 	};
 	
-	if(options)
+	if (options)
 	{
 		$.extend(defaults, options);
 	}
 	
-	return this.each(function(){
+	return this.each(function() {
 		
 		defaults.onstart.call(this);
 		
-		$this = $(this);
-		$window = $(window);
+		var $this = $(this);
+		var $window = $(window);
 		
 		var mh = $this.height(),
 			mw = $this.width(),
 			ww = $window.width(),
 			wh = $window.height(),
-			vp = ((wh/2)-(mh/2)) * (mh / (wh * .7)),
+			vp = ((wh/2)-(mh/2)) + $window.scrollTop(),
 			hp = (ww/2)-(mw/2);
 			
-		if(!defaults.scrollable)
+		if ( ! defaults.scrollable)
 		{
-			$('body')
-				.height(wh)
-				.css({overflow: 'hidden'});
+			$('body').height(wh).css({overflow: 'hidden'});
 		}	
 		
 		$('<div />')
@@ -58,10 +55,11 @@ jQuery.fn.modal = function(options){
 			.appendTo('body')
 			.animate({opacity: defaults.opacity})
 			.on('click', function(){
-				if(jQuery.isFunction(defaults.onhide))
+				if (jQuery.isFunction(defaults.onhide))
 				{
 					defaults.onhide.call(this);
-				}else
+				}
+				else
 				{
 					$(this).animate({opacity: 0}, defaults.speed, function(){
 						$(this).remove();
@@ -70,21 +68,16 @@ jQuery.fn.modal = function(options){
 					$('.showModal.active').removeClass('active');
 				}
 				
+				$('body').css({ height: 'auto', overflow: 'visible' });
 			});
 		
-		if(jQuery.isFunction(defaults.onshow)){
-			defaults.onshow.call(this);
-		}else
+		if (jQuery.isFunction(defaults.onshow))
 		{
-			$this
-			.css({
-				display: 'block',  
-				left: hp,
-			})
-			.animate({
-				opacity: 1,
-				top: vp,
-			}, defaults.speed);
+			defaults.onshow.call(this);
+		}
+		else
+		{
+			$this.css({ display: 'block', left: hp }).animate({ opacity: 1, top: vp }, defaults.speed);
 		}			
 			
 		defaults.onfinish.call(this);
