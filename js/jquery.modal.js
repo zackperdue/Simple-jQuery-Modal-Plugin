@@ -1,13 +1,13 @@
 /**
  * @author Zack Perdue / Ziggidy Creative
- * @author Clayton McIlrath / Arrae Creative
+ * @author Clayton McIlrath
  * 
  * http://zackperdue.com
  * http://ziggidycreative.com
- * http://arr.ae/
+ * http://thinkclay.com
  *
  * Version 0.2
- * Copyright (c) 2012 Clay McIlrath and Zack Perdue
+ * Copyright (c) 2013 Clay McIlrath and Zack Perdue
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/mit-license.php
